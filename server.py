@@ -10,7 +10,8 @@ class Application(tornado.web.Application):
 
 	def __init__(self):
 		handlers = [
-		(r"/", routes.index.Index), 	
+		(r"/", routes.index.Index),
+		(r"/favicon.ico", tornado.web.StaticFileHandler, {"path": os.path.join(os.path.dirname(__file__), 'favicon.ico'}), 	
 		#Statics
 		(r"/statics/(.*)", tornado.web.StaticFileHandler, {"path": os.path.join(os.path.dirname(__file__), 'statics/')}),
 		(r"/css/(.*)", tornado.web.StaticFileHandler, {"path": os.path.join(os.path.dirname(__file__), 'statics/css/')}),
@@ -20,6 +21,7 @@ class Application(tornado.web.Application):
         #Files
         (r"/files/(.*)", tornado.web.StaticFileHandler, {"path": os.path.join(os.path.dirname(__file__), 'files/')}),
         (r"/uploads/(.*)", tornado.web.StaticFileHandler, {"path": os.path.join(os.path.dirname(__file__), 'files/')}),
+
 
 		]
 	
@@ -36,7 +38,7 @@ class Application(tornado.web.Application):
 def main():
 	report_app = Application()
 	http_server = tornado.httpserver.HTTPServer(report_app)
-	http_server.listen(8000)
+	http_server.listen(80)
 	tornado.ioloop.IOLoop.instance().start()
 
 if __name__ == '__main__':
