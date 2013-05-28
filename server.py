@@ -11,7 +11,7 @@ class Application(tornado.web.Application):
 	def __init__(self):
 		handlers = [
 		(r"/", routes.index.Index),
-		(r"/favicon.ico", tornado.web.StaticFileHandler, {"path": os.path.join(os.path.dirname(__file__), 'favicon.ico')}), 	
+		(r"/favicon.ico", tornado.web.StaticFileHandler, {"path": os.path.join(os.path.dirname(__file__), 'statics/favicon.ico')}), 	
 		#Statics
 		(r"/statics/(.*)", tornado.web.StaticFileHandler, {"path": os.path.join(os.path.dirname(__file__), 'statics/')}),
 		(r"/css/(.*)", tornado.web.StaticFileHandler, {"path": os.path.join(os.path.dirname(__file__), 'statics/css/')}),
